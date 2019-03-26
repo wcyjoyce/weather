@@ -7,6 +7,7 @@ import React, { Component } from "react";
 // 4) Render weather method
 
 import Weather from "./weather.jsx";
+import Spinner from "./spinner.jsx";
 
 class App extends Component {
   state = { latitude: null, longitude: null, errorMessage: "" }
@@ -30,7 +31,7 @@ class App extends Component {
     } else if (!this.state.errorMessage && this.state.latitude && this.state.longitude) {
       return <Weather latitude={this.state.latitude} longitude={this.state.longitude} />
     } else {
-      return <div>Loading...</div>
+      return <Spinner message="Please accept location request" />
     }
   }
 }
