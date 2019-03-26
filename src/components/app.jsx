@@ -6,6 +6,8 @@ import React, { Component } from "react";
 // 3) Update state
 // 4) Render weather method
 
+import Weather from "./weather.jsx";
+
 class App extends Component {
   state = { latitude: null, longitude: null, errorMessage: "" }
 
@@ -24,11 +26,11 @@ class App extends Component {
 
   render() {
     if (this.state.errorMessage && !this.state.latitude) {
-      return <div>{this.state.errorMessage}</div>
+      return <Weather errorMessage={this.state.errorMessage} />
     } else if (!this.state.errorMessage && this.state.latitude && this.state.longitude) {
-      return <div>Latitude: {this.state.latitude} | Longitude:{this.state.longitude}</div>
+      return <Weather latitude={this.state.latitude} longitude={this.state.longitude} />
     } else {
-      return<div>Loading...</div>
+      return <div>Loading...</div>
     }
   }
 }
